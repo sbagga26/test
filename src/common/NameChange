@@ -1,0 +1,51 @@
+
+
+//upsert attachment
+function attachmentpayload(req)
+{
+    try {
+        
+        var attachment={
+        "__metadata": {
+            "uri": "Attachment",
+            "type": "SFOData.Attachment"
+        },
+        "fileContent":req.body.fileContent,
+        "fileName":req.body.fileName,
+        "module":req.body.module,
+        "userId":req.body.userId
+    }
+} 
+catch (error) {
+  throw error      
+}
+    return attachment
+}
+
+//update name
+function updatenamepayload(req,Attachmentid)
+{
+ 
+        var name={
+        "__metadata": {
+        "uri": "PerPersonal",
+        "type": "SFOData.PerPersonal"
+    },
+    "startDate":'/Date('+req.body.startDate+')/',
+    "personIdExternal":req.body.userId,
+    "firstName":req.body.firstName,
+    "lastName":req.body.lastName,
+    "middleName":req.body.middleName,
+    "gender":req.body.gender,
+    "customString2":req.body.legalnameonPassport,
+    "attachmentId":Attachmentid
+}
+    return name
+}
+
+module.exports=
+{
+    updatenamepayload
+    ,attachmentpayload
+    
+}
